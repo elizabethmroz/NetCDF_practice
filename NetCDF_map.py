@@ -90,7 +90,7 @@ time_values = ncdata.variables['time'][:]
 strptimes = [starttime + dt.timedelta(days=i) for i in time_values]
 
 # obtain time index for a specific input time
-choice = '2010-04-16 00:00:00' # if choice is beyond the index, the last index is printed
+choice = '2005-04-16 00:00:00' # if choice is beyond the index, the last index is printed
 choice_strp = dt.datetime.strptime(choice,'%Y-%m-%d %H:%M:00')
 tidx = np.argmin(np.abs(np.array(strptimes)-choice_strp))
 
@@ -111,12 +111,36 @@ precip = ncdata.variables['pr'][tidx,:]
 lon = ncdata.variables['lon'][:]
 lat = ncdata.variables['lat'][:]
 
-# plot
+
+'''TROUBLESHOOTING
+
+    TypeError: draw_wrapper() got an unexpected keyword argument 'inframe'
+    
+    '''
+    
+# plot TEST 1
 plt.figure(figsize=(10,7))
+ax=plt.subplot(projection = ccrs.PlateCarree())
+Z = ax.pcolormesh(lon,lat,precip,cmap='jet')
+plt.colorbar(Z)
+ax.coastlines()
+plt.show()
+
+# plot TEST 2
+plt.figure(figsize = (10,7))
 plt.pcolormesh(lon,lat,precip,cmap='jet')
 plt.show()
+
 
 '''
 NOTES FOR SELF
         The file is from 1st Jan 2001 to 31st Dec 2005
+        
+MISC THINGS COULD BE FUN TO DO
+        Could do a for-loop to create a plot for each day, figure out a way of merging them into a gif:
+            Potential algorithm =
+            (1) For-loop, for each day in time, create a plot
+            (2) Save the plot to a folder, filename should be the date
+            (3) Use some sort of image processing library in python to read all the files in a folder, 
+                order them by date, write them to a video or gif
 '''
