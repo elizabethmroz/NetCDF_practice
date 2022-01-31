@@ -96,6 +96,25 @@ tidx = np.argmin(np.abs(np.array(strptimes)-choice_strp))
 
 print("Index:%i, time:"%tidx, strptimes[tidx])
 
+'''
+PLOT THE DATA
+
+    lat and lon are 1-dimensional variables
+    time is a 1-dimensional variable
+    precip is a 3-dimensional variable
+
+
+'''
+
+# access variable for each dimension
+precip = ncdata.variables['pr'][tidx,:]
+lon = ncdata.variables['lon'][:]
+lat = ncdata.variables['lat'][:]
+
+# plot
+plt.figure(figsize=(10,7))
+plt.pcolormesh(lon,lat,precip,cmap='jet')
+plt.show()
 
 '''
 NOTES FOR SELF
