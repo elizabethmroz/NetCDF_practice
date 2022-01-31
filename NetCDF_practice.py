@@ -1,5 +1,8 @@
 # libraries
 import netCDF4 as nc
+import matplotlib.pyplot as plt
+import numpy as np
+import cartopy
 
 # loading netCDF file
 bfp = "C:\\Users\\gy16e3m\\Documents\\Python\\NetCDF\\pr_day_GFDL-ESM2M_historical_r1i1p1_EWEMBI_20010101-20051231.nc4" 
@@ -41,4 +44,14 @@ print(bfp_precipitation)
 
 bfp_precip_subset = (bfp_precipitation[0, 100:120, 100:120]) # 3-dimensional array
 print(bfp_precip_subset)
+
+
+# randomly selecting latitudes and longitudes to sample
+random_lat = np.random.choice(bfp_dataset['lat'])
+random_lon = np.random.choice(bfp_dataset['lon'])
+
+
+# writing NetCDF file
+location = {'name': 'location', 'lat': random_lat, 'lon': random_lon} # selected a location
+
 
