@@ -120,17 +120,32 @@ lat = ncdata.variables['lat'][:]
     
 # plot TEST 1
 plt.figure(figsize=(10,7))
-ax=plt.subplot(projection = ccrs.PlateCarree())
+ax = plt.subplot(projection = ccrs.Mercator())
 Z = ax.pcolormesh(lon,lat,precip,cmap='jet')
 plt.colorbar(Z)
 ax.coastlines()
-plt.show()
+plt.show() # this doesnt work
 
 # plot TEST 2
 plt.figure(figsize = (10,7))
 plt.pcolormesh(lon,lat,precip,cmap='jet')
+
+plt.show() # this works
+
+# plot TEST 3
+plt.figure(figsize=(10,7))
+ax = plt.axes(projection = ccrs.PlateCarree())
+plt.title('Australia')
+ax.set_extent([112, 154, -44, -5.6]), ccrs.PlateCarree()
+ax.coastlines(resolution='110m')
+plt.plot(145.014659, -37.785922,  markersize=2, marker='o', color='red')
 plt.show()
 
+
+Z = ax.pcolormesh(lon,lat,precip,cmap='jet')
+plt.colorbar(Z)
+ax.coastlines()
+plt.show() # this doesnt work
 
 '''
 NOTES FOR SELF
