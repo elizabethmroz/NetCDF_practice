@@ -131,9 +131,25 @@ plt.figure(figsize=(10,7))
 plt.pcolormesh(lon,lat,t2,cmap='jet', vmin=min_t2, vmax=max_t2)
 plt.colorbar()
 plt.title('Precipitation at {}'.format(choice_strp))
+plt.savefig('test.png', bbox_inches='tight')
 plt.show()
 
 
+
+
+
+'''
+plan:
+    
+select a start date and end date
+obtain the indexes of those dates
+execute a for-loop that generates a plot for each day between the two dates
+write out each figure to a file (in a folder)
+
+THEN
+
+read each figure from a file in order
+combine them together to create a video or gif
 
 
 
