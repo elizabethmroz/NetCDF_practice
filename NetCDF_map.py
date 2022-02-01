@@ -1,6 +1,15 @@
 '''
 TUTORIAL FOLLOWED:
     https://gradsaddict.blogspot.com/2019/12/python-tutorial-introduction-to-reading.html
+
+
+IMPORTANT REFERENCES
+    https://pcmdi.llnl.gov/mips/cmip3/variableList.html 
+    Output variable name: pr 
+    Standard name: precipitation flux
+    Units: kg m-2 s-1
+    Notes: includes both liquid and solid phases
+
 '''
 
 # install packages
