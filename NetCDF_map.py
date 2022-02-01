@@ -90,7 +90,7 @@ Information derived:
 
 # set starting 'strp' time object
 starttime = dt.datetime.strptime(ncdata.variables['time'].units,
-                                 'hours since %Y-%m-%d %H:%M:0.0')
+                                 'days since %Y-%m-%d %H:%M:00')
 
 
 # pull time data into numpy array, build a list of datetime objects
@@ -117,15 +117,23 @@ PLOT THE DATA
 
 
 # access variable for each dimension
-t2 = ncdata.variables['air'][tidx,:]
+t2 = ncdata.variables['pr'][tidx,:]
 lon = ncdata.variables['lon'][:]
 lat = ncdata.variables['lat'][:]
 
 
+# max and min precipitation values in np array
+max_t2 = np.ndarray.max(t2)
+min_t2 = np.ndarray.min(t2)
+
 # simple plot
 plt.figure(figsize=(10,7))
-plt.pcolormesh(lon,lat,t2,cmap='jet')
+plt.pcolormesh(lon,lat,t2,cmap='jet', vmin=min_t2, vmax=max_t2)
+plt.colorbar()
+plt.title('Precipitation at {}'.format(choice_strp))
 plt.show()
+
+
 
 
 
