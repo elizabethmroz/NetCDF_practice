@@ -76,7 +76,7 @@ LOAD VARIABLES
 for var in ncdata.variables:
     print(var)
     
-    
+print(ncdata['pr'])
 '''
 CONVERT TIME VALUES INTO A PYTHON DATETIME
 '''
@@ -161,12 +161,12 @@ read each figure from a file in order
 combine them together to create a video or gif
 
 
-
+'''
 '''
 NOTES FOR SELF
         The file is from 1st Jan 2001 to 31st Dec 2005
         
-        I have no idea what the units are in for precipitation 
+        I have no idea what the units are in for precipitation  - they're in kg m-2 s-2'
      
 MISC THINGS COULD BE FUN TO DO
         Could do a for-loop to create a plot for each day, figure out a way of merging them into a gif:
